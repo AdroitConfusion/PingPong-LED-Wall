@@ -3,7 +3,7 @@
 #include <string.h>
 #include "letters.h"
 #include "tetrisBlock.cpp"
-#include "breakoutBlock.cpp"
+#include "breakOutBlock.cpp"
 #include "palettes.h"
 #include "faces.h"
 
