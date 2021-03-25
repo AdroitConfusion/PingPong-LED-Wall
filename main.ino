@@ -2,8 +2,8 @@
 #include <NintendoExtensionCtrl.h>
 #include <string.h>
 #include "letters.h"
-#include "blocks.cpp"
-#include "breakOutBlock.cpp"
+#include "tetrisBlock.cpp"
+#include "breakoutBlock.cpp"
 #include "palettes.h"
 #include "faces.h"
 
@@ -420,10 +420,10 @@ const int gameHeightBottom = 21;
 int maxY, maxX = -1;
 int minX, minY = 23;
 
-Block *currentBlock;
-Block *nextBlock;
-Block *nextBlockTwo;
-Block *nextBlockThree;
+TetrisBlock *currentBlock;
+TetrisBlock *nextBlock;
+TetrisBlock *nextBlockTwo;
+TetrisBlock *nextBlockThree;
 
 int savedBlocks[23][23];
 
@@ -438,10 +438,10 @@ void tetris()
   tetrisScore=0;
   srand(millis());
 
-  currentBlock = new Block(13, 5, rand()%7);
-  nextBlock = new Block(4, 19, rand()%7);
-  nextBlockTwo = new Block(4, 14, rand()%7);
-  nextBlockThree = new Block(4, 9, rand()%7);
+  currentBlock = new TetrisBlock(13, 5, rand()%7);
+  nextBlock = new TetrisBlock(4, 19, rand()%7);
+  nextBlockTwo = new TetrisBlock(4, 14, rand()%7);
+  nextBlockThree = new TetrisBlock(4, 9, rand()%7);
 
   memset(&savedBlocks, -1, sizeof(savedBlocks[0][0])*23*23);
  
@@ -548,13 +548,13 @@ void fall(){
       loadBlocks();
 
       delete currentBlock;
-      currentBlock = new Block(13, 5, nextBlock->blockType);
+      currentBlock = new TetrisBlock(13, 5, nextBlock->blockType);
       delete nextBlock;
-      nextBlock = new Block(4, 19, nextBlockTwo->blockType);
+      nextBlock = new TetrisBlock(4, 19, nextBlockTwo->blockType);
       delete nextBlockTwo;
-      nextBlockTwo = new Block(4, 14, nextBlockThree->blockType);
+      nextBlockTwo = new TetrisBlock(4, 14, nextBlockThree->blockType);
       delete nextBlockThree;
-      nextBlockThree = new Block(4, 9, rand() % 7);
+      nextBlockThree = new TetrisBlock(4, 9, rand() % 7);
   }
 }
 
@@ -660,7 +660,7 @@ int breakOutScore;
 int breakOutFrame;
 
 boolean breakOutGameOver;
-breakOutBlock blockArray[21];
+BreakoutBlock blockArray[21];
 
 int ballX;
 int ballY;

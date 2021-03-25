@@ -1,14 +1,14 @@
 
-class breakOutBlock
+class BreakoutBlock
 {
   public:
     int breakOutX[6]; 
     int breakOutY[6]; 
     int color;
 
-    breakOutBlock () {};
+    BreakoutBlock () {};
     
-    breakOutBlock(int iX, int iY, int color)
+    BreakoutBlock(int iX, int iY, int color)
     {           
         setXY(iX, iY, color);
     };
